@@ -17,7 +17,7 @@ async def search(bot, message):
     if message.text.startswith("/"):
        return    
     query   = message.text 
-    head    = "{from_user} Here is the results 👇\n\nPowered By <b><I>@CyniteBackup</I></b>\n\n"
+    head    = "<b> (User) 👀 𝐎𝐧𝐥𝐢𝐧𝐞 𝐒𝐭𝐫𝐞𝐚𝐦𝐢𝐧𝐠 𝐋𝐢𝐧𝐤 👀</b>\n\n"
     results = ""
     try:
        for channel in channels:
@@ -25,15 +25,13 @@ async def search(bot, message):
                name = (msg.text or msg.caption).split("\n")[0]
                if name in results:
                   continue 
-               results += f"<b><I>♻️ {name}\n🔗 {msg.link}</I></b>\n\n"                                                      
+               results += f"<b>🎭 {name}\n👉 {msg.link}</b>\n\n"                                                      
        if bool(results)==False:
           movies = await search_imdb(query)
           buttons = []
           for movie in movies: 
               buttons.append([InlineKeyboardButton(movie['title'], callback_data=f"recheck_{movie['id']}")])
-          msg = await message.reply_photo(photo="https://telegra.ph/file/cf6706158b0bfaf436f54.jpg",
-                                          caption="<b><I>I Couldn't find anything related to Your Query😕.\nDid you mean any of these?</I></b>", 
-                                          reply_markup=InlineKeyboardMarkup(buttons))
+          msg = await message.reply_text( 👀 𝐒𝐨𝐫𝐫𝐲 𝐍𝐨 𝐓𝐞𝐫𝐚𝐛𝐨𝐱 𝐋𝐢𝐧𝐤 𝐅𝐨𝐮𝐧𝐝 😔\n\n𝐆𝐞𝐭 𝐝𝐢𝐫𝐞𝐜𝐭 𝐟𝐢𝐥𝐞 📁\n\n𝐀𝐬𝐤 𝐚𝐠𝐚𝐢𝐧 𝐭𝐡𝐢𝐬 𝐦𝐨𝐯𝐢𝐞 𝐢𝐧 𝐭𝐡𝐢𝐬 👇 𝐠𝐫𝐨𝐮𝐩 𝐮 𝐠𝐞𝐭 𝐅𝐢𝐥𝐞 📁/n📤 here :- https://telegram.me/+wQpK7mlEc_JkNjVl )
        else:
           msg = await message.reply_text(text=head+results, disable_web_page_preview=True)
        _time = (int(time()) + (15*60))
@@ -65,13 +63,14 @@ async def recheck(bot, update):
                name = (msg.text or msg.caption).split("\n")[0]
                if name in results:
                   continue 
-               results += f"<b><I>♻️🍿 {name}</I></b>\n\n🔗 {msg.link}</I></b>\n\n"
+               results += f"<b><I>🎭 {name}</I></b>\n\n👉 {msg.link}</I></b>\n\n"
        if bool(results)==False:          
-          return await update.message.edit("Still no results found! Please Request To Group Admin", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🎯 Request To Admin 🎯", callback_data=f"request_{id}")]]))
+          return await update.message.edit( "👀 𝐒𝐨𝐫𝐫𝐲 𝐍𝐨 𝐓𝐞𝐫𝐚𝐛𝐨𝐱 𝐋𝐢𝐧𝐤 𝐅𝐨𝐮𝐧𝐝 😔\n\n𝐆𝐞𝐭 𝐝𝐢𝐫𝐞𝐜𝐭 𝐟𝐢𝐥𝐞 📁\n\n𝐀𝐬𝐤 𝐚𝐠𝐚𝐢𝐧 𝐭𝐡𝐢𝐬 𝐦𝐨𝐯𝐢𝐞 𝐢𝐧 𝐭𝐡𝐢𝐬 👇 𝐠𝐫𝐨𝐮𝐩 𝐮 𝐠𝐞𝐭 𝐅𝐢𝐥𝐞 📁/n📤 here :- https://telegram.me/+wQpK7mlEc_JkNjVl)", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(" Ask here 📤 To Get File", url=f"https://t.me/+wQpK7mlEc_JkNjVl")]]))
        await update.message.edit(text=head+results, disable_web_page_preview=True)
     except Exception as e:
        await update.message.edit(f"❌ Error: `{e}`")
-
+       await update.message.delete(20)
+                                   
 
 @Client.on_callback_query(filters.regex(r"^request"))
 async def request(bot, update):
