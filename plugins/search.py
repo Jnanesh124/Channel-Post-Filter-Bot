@@ -31,7 +31,7 @@ async def search(bot, message):
           buttons = []
           for movie in movies: 
               buttons.append([InlineKeyboardButton(movie['title'], callback_data=f"recheck_{movie['id']}")])
-          msg = await message.reply_text(𝐒𝐨𝐫𝐫𝐲 𝐍𝐨 𝐓𝐞𝐫𝐚𝐛𝐨𝐱 𝐋𝐢𝐧𝐤 𝐅𝐨𝐮𝐧𝐝 😔\n\n𝐆𝐞𝐭 𝐝𝐢𝐫𝐞𝐜𝐭 𝐟𝐢𝐥𝐞 📁\n\n𝐀𝐬𝐤 𝐚𝐠𝐚𝐢𝐧 𝐭𝐡𝐢𝐬 𝐦𝐨𝐯𝐢𝐞 𝐢𝐧 𝐭𝐡𝐢𝐬 👇 𝐠𝐫𝐨𝐮𝐩 𝐮 𝐠𝐞𝐭 𝐅𝐢𝐥𝐞 📁/n📤 here :- https://telegram.me/+wQpK7mlEc_JkNjVl )
+          msg = await message.reply_text(𝐒𝐨𝐫𝐫𝐲 𝐍𝐨 𝐓𝐞𝐫𝐚𝐛𝐨𝐱 𝐋𝐢𝐧𝐤 𝐅𝐨𝐮𝐧𝐝 \n\n𝐆𝐞𝐭 𝐝𝐢𝐫𝐞𝐜𝐭 𝐟𝐢𝐥𝐞 📁\n\n𝐀𝐬𝐤 𝐚𝐠𝐚𝐢𝐧 𝐭𝐡𝐢𝐬 𝐦𝐨𝐯𝐢𝐞 𝐢𝐧 𝐭𝐡𝐢𝐬 👇 𝐠𝐫𝐨𝐮𝐩 𝐮 𝐠𝐞𝐭 𝐅𝐢𝐥𝐞 📁/n here :- https://telegram.me/+wQpK7mlEc_JkNjVl )
        else:
           msg = await message.reply_text(text=head+results, disable_web_page_preview=True)
        _time = (int(time()) + (15*60))
