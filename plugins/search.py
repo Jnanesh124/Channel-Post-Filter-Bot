@@ -25,7 +25,7 @@ async def search(bot, message):
                name = (msg.text or msg.caption).split("\n")[0]
                if name in results:
                   continue 
-               results += f"<b>🎭 {name}\n👉 {msg.link}</b>\n\n"                                                      
+               results += f"<b>Person:-{user_name}\n\n🎭 {name}\n👉 {msg.link}</b>\n\n"                                                      
        if bool(results)==False:
           movies = await search_imdb(query)
           buttons = []
@@ -63,7 +63,7 @@ async def recheck(bot, update):
                name = (msg.text or msg.caption).split("\n")[0]
                if name in results:
                   continue 
-               results += f"<b>🎭 {name}</b>\n\n👉 {msg.link}</b>\n\n"
+               results += f"<b>person:- {user_name}\n\n🎭 {name}</b>\n\n👉 {msg.link}</b>\n\n"
        if bool(results)==False:          
           return await update.message.edit("𝐒𝐨𝐫𝐫𝐲 𝐍𝐨 𝐓𝐞𝐫𝐚𝐛𝐨𝐱 𝐋𝐢𝐧𝐤 𝐅𝐨𝐮𝐧𝐝 😔\n\n𝐆𝐞𝐭 𝐝𝐢𝐫𝐞𝐜𝐭 𝐟𝐢𝐥𝐞 📁\n\n𝐀𝐬𝐤 𝐚𝐠𝐚𝐢𝐧 𝐭𝐡𝐢𝐬 𝐦𝐨𝐯𝐢𝐞 𝐢𝐧 𝐭𝐡𝐢𝐬 👇 #BOT 𝐮 𝐠𝐞𝐭 𝐅𝐢𝐥𝐞 📁\n\n📤 here :- https://telegram.me/rockersallmoviesearchbot", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Ask here 📤 To Get File", url=f"https://t.me/rockersallmoviesearchbot")]]))
        await update.message.edit(text=head+results, disable_web_page_preview=True)
