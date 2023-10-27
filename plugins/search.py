@@ -31,7 +31,7 @@ async def search(bot, message):
           buttons = []
           for movie in movies: 
               buttons.append([InlineKeyboardButton(movie['title'], callback_data=f"recheck_{movie['id']}")])
-          msg = await message.reply_text("<b>𝐒𝐢𝐫 {message.from_user.mention}\n\n𝐔𝐫 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐞𝐝 𝐒𝐭𝐮𝐟𝐟 𝐈𝐬 𝐑𝐞𝐚𝐝𝐲 𝐓𝐨 𝐖𝐚𝐭𝐜𝐡 👀\n\n𝐀𝐠𝐚𝐢𝐧 𝐚𝐬𝐤 𝐮𝐫 𝐒𝐭𝐮𝐟𝐟 𝐢𝐧 𝐭𝐡𝐢𝐬 𝐛𝐨𝐭 𝐮 𝐠𝐞𝐭 𝐃𝐢𝐫𝐞𝐜𝐭 𝐅𝐢𝐥𝐞 📁\n\nHere :- @Rockersmovieproviderbot</b>"),
+          msg = await message.reply_text("𝐒𝐢𝐫 {message.from_user.mention}\n\n𝐔𝐫 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐞𝐝 𝐒𝐭𝐮𝐟𝐟 𝐈𝐬 𝐑𝐞𝐚𝐝𝐲 {User_name} 𝐓𝐨 𝐖𝐚𝐭𝐜𝐡 👀\n\n𝐀𝐠𝐚𝐢𝐧 𝐚𝐬𝐤 𝐮𝐫 𝐒𝐭𝐮𝐟𝐟 𝐢𝐧 𝐭𝐡𝐢𝐬 𝐛𝐨𝐭 𝐮 𝐠𝐞𝐭 {From_user} 𝐃𝐢𝐫𝐞𝐜𝐭 𝐅𝐢𝐥𝐞 📁\n\nHere :- @Rockersmovieproviderbot"),
        else:
           msg = await message.reply_text(text=head+results, disable_web_page_preview=True)
        _time = (int(time()) + (15*60))
@@ -65,7 +65,7 @@ async def recheck(bot, update):
                   continue 
                results += f"<b>person:- {user_name}\n\n🎭 {name}</b>\n\n👉 {msg.link}</b>\n\n"
        if bool(results)==False:          
-          return await update.message.edit("<b>𝐒𝐢𝐫 {message.from_user.mention}\n\n𝐔𝐫 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐞𝐝 𝐒𝐭𝐮𝐟𝐟 𝐈𝐬 𝐑𝐞𝐚𝐝𝐲 𝐓𝐨 𝐖𝐚𝐭𝐜𝐡 👀\n\n𝐀𝐠𝐚𝐢𝐧 𝐚𝐬𝐤 𝐮𝐫 𝐒𝐭𝐮𝐟𝐟 𝐢𝐧 𝐭𝐡𝐢𝐬 𝐛𝐨𝐭 𝐮 𝐠𝐞𝐭 𝐃𝐢𝐫𝐞𝐜𝐭 𝐅𝐢𝐥𝐞 📁\n\nHere :- @Rockersmovieproviderbot</b>", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Ask here 📤 To Get File", url=f"https://t.me/rockersallmoviesearchbot")]]))
+          return await update.message.edit("𝐒𝐢𝐫 {message.from_user.mention}\n\n𝐔𝐫 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐞𝐝 𝐒𝐭𝐮𝐟𝐟 𝐈𝐬 𝐑𝐞𝐚𝐝𝐲 {From_user}  𝐓𝐨 𝐖𝐚𝐭𝐜𝐡 👀\n\n𝐀𝐠𝐚𝐢𝐧 𝐚𝐬𝐤 𝐮𝐫 𝐒𝐭𝐮𝐟𝐟 𝐢𝐧 𝐭𝐡𝐢𝐬 𝐛𝐨𝐭 𝐮  {User_name} 𝐠𝐞𝐭 𝐃𝐢𝐫𝐞𝐜𝐭 𝐅𝐢𝐥𝐞 📁\n\nHere :- @Rockersmovieproviderbot", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Ask here 📤 To Get File", url=f"https://t.me/rockersallmoviesearchbot")]]))
        await update.message.edit(text=head+results, disable_web_page_preview=True)
     except Exception as e:
        await update.message.edit(f"❌ Error: `{e}`")
